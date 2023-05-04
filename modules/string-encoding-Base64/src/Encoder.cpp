@@ -73,11 +73,14 @@ string Base64Encoder::base64ToStr(string str) {
 }
 
 int Base64Encoder::findIndex(char str[], char c) {
+    int res = -1;
     for (int i = 0; i < 64; i++) {
         if (c == str[i]) {
-            return i;
+            res = i;
+            break;
         }
     }
+    return res;
 }
 
 string Base64Encoder::reverseString(std::string str) {
