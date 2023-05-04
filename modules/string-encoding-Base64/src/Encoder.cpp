@@ -41,6 +41,7 @@ string Base64Encoder::base64ToStr(string str) {
     string binaryString, res;
     char symbols[] =
         "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    int equalsCount = 0;
 
     for (char c : str) {
         if (c != '=') {
@@ -52,10 +53,12 @@ string Base64Encoder::base64ToStr(string str) {
             }
             binaryString += binChar;
         } else {
+            equalsCount++;
             binaryString += "000000";
         }
     }
 
+    binaryString = binaryString.substr(0, binaryString.length() - equalsCount * 8);
     int index = 0;
     int blockNum = binaryString.length() / 8;
     while (index != blockNum) {
@@ -74,7 +77,6 @@ int Base64Encoder::findIndex(char str[], char c) {
             return i;
         }
     }
-    return -1;
 }
 
 string Base64Encoder::reverseString(std::string str) {

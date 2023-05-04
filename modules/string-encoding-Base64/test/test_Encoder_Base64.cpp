@@ -53,8 +53,8 @@ TEST(Kudryashov_Nikita_Base64_Encoder_test, Can_encode_mixed_string) {
 
 TEST(Kudryashov_Nikita_Base64_Encoder_test, Can_decode_letter_string) {
     // Arrange
-    string str = "SGl0cnZhVHZCbExUT2dMUXBVeHVHdnVBT1FLcHBw";
-    string expectedStr = "HitrvaTvBlLTOgLQpUxuGvuAOQKppp";
+    string str = "Z1BleHRMa0dKU253TW9OQ3BuSHBUemRlekFIdG0=";
+    string expectedStr = "gPextLkGJSnwMoNCpnHpTzdezAHtm";
 
     // Act
     string result = Base64Encoder::base64ToStr(str);
