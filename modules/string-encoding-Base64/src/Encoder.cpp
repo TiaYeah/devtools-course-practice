@@ -58,7 +58,7 @@ string Base64Encoder::base64ToStr(string str) {
         }
     }
 
-    binaryString = binaryString.substr(0, binaryString.length() 
+    binaryString = binaryString.substr(0, binaryString.length()
         - equalsCount * 8);
     int index = 0;
     int blockNum = binaryString.length() / 8;
