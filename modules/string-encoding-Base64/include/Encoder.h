@@ -14,6 +14,8 @@ class Base64Encoder {
     static string strToBase64(string);
     static string base64ToStr(string);
  private:
+    static int findIndex(char str[], char c);
+    static string reverseString(string str);
     static string intToBin(int num);
     static int binToInt(string num);
 };

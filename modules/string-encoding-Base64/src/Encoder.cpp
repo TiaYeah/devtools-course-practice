@@ -44,8 +44,7 @@ string Base64Encoder::base64ToStr(string str) {
 
     for (char c : str) {
         if (c != '=') {
-            int index = std::find(std::begin(symbols), std::end(symbols), c)
-                - std::begin(symbols);
+            int index = findIndex(symbols, c);
             string binChar = intToBin(static_cast<int>(index));
 
             while (binChar.length() < 6) {
@@ -69,6 +68,23 @@ string Base64Encoder::base64ToStr(string str) {
     return res;
 }
 
+int Base64Encoder::findIndex(char str[], char c) {
+    for (int i = 0; i < 64; i++) {
+        if (c == str[i]) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+string Base64Encoder::reverseString(std::string str) {
+    std::string res;
+    for (char c : str) {
+        res = c + res;
+    }
+    return res;
+}
+
 string Base64Encoder::intToBin(int num) {
     string res;
     while (num > 0) {
@@ -76,15 +92,14 @@ string Base64Encoder::intToBin(int num) {
         res += std::to_string(ost);
         num /= 2;
     }
-    reverse(res.begin(), res.end());
 
-    return res;
+    return reverseString(res);
 }
 
 int Base64Encoder::binToInt(string num) {
     int res = 0;
-    reverse(num.begin(), num.end());
-    for (int i = 0; i < num.length(); i++) {
+    num = reverseString(num);
+    for (int i = 0; i < static_cast<int>(num.length()); i++) {
         if (num[i] == '1') {
             res += pow(2, i);
         }
