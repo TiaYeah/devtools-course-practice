@@ -46,7 +46,7 @@ string Base64Encoder::base64ToStr(string str) {
         if (c != '=') {
             int index = std::find(std::begin(symbols), std::end(symbols), c)
                 - std::begin(symbols);
-            string binChar = intToBin(static_cast<int>(c));
+            string binChar = intToBin(static_cast<int>(index));
 
             while (binChar.length() < 6) {
                 binChar = "0" + binChar;
