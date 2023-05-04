@@ -1,13 +1,15 @@
-#include "include/Encoder.h" 
+// Copyright 2023 Kudryashov Nikita
+#include "include/Encoder.h"
 
 
 string Base64Encoder::strToBase64(string str) {
     string binaryString, res;
-    char symbols[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    char symbols[] =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     int equalsCount = 0;
 
-    for(char c : str) {
-        string binChar = intToBin((int)c);
+    for (char c : str) {
+        string binChar = intToBin(static_cast<int>(c));
         while (binChar.length() < 8) {
             binChar = "0" + binChar;
         }
@@ -37,12 +39,14 @@ string Base64Encoder::strToBase64(string str) {
 
 string Base64Encoder::base64ToStr(string str) {
     string binaryString, res;
-    char symbols[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    char symbols[] =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
     for (char c : str) {
         if (c != '=') {
-            int index = std::find(begin(symbols), end(symbols), c) - begin(symbols);
-            string binChar = intToBin((int)index);
+            int index = std::find(std::begin(symbols), std::end(symbols), c)
+                - std::begin(symbols);
+            string binChar = intToBin(static_cast<int>(c));
 
             while (binChar.length() < 6) {
                 binChar = "0" + binChar;
@@ -58,7 +62,7 @@ string Base64Encoder::base64ToStr(string str) {
     while (index != blockNum) {
         string subStr = binaryString.substr(index * 8, 8);
         int newChar = binToInt(subStr);
-        res += (char)newChar;
+        res += static_cast<char>(newChar);
         index++;
     }
 
@@ -69,11 +73,11 @@ string Base64Encoder::intToBin(int num) {
     string res;
     while (num > 0) {
         int ost = num % 2;
-        res += to_string(ost);
+        res += std::to_string(ost);
         num /= 2;
     }
     reverse(res.begin(), res.end());
-    
+
     return res;
 }
 

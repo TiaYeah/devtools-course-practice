@@ -1,5 +1,6 @@
+// Copyright 2023 Kudryashov Nikita
 #include <gtest/gtest.h>
-#include "include/Encoder.h" 
+#include "include/Encoder.h"
 
 
 TEST(Kudryashov_Nikita_Base64_Encoder_test, Can_encode_letter_string) {
