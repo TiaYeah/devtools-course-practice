@@ -30,8 +30,8 @@ bool LongestCommonSubsequenceApp::validateNumberOfArguments(int argc,
     } else if (argc < 3) {
         help(argv[0], "ERROR: Shoud be at least 2 arguments\n\n");
         return false;
-    } else if (atoi(argv[1]) == 0 && strcmp(argv[1], "0")
-                || atoi(argv[2]) == 0 && strcmp(argv[2], "0")) {
+    } else if ((atoi(argv[1]) == 0 && strcmp(argv[1], "0"))
+                || (atoi(argv[2]) == 0 && strcmp(argv[2], "0"))) {
         help(argv[0], "ERROR: Size is not a number!\n\n");
         return false;
     } else if (atoi(argv[1]) + atoi(argv[2]) != argc - 3) {
@@ -46,7 +46,7 @@ bool LongestCommonSubsequenceApp::validateNumberOfArguments(int argc,
 int charToInt(const char* c, const char* appname) {
     int res = atoi(c);
 
-    if (res == 0 && c != "0") {
+    if (res == 0 && strcmp(c, "0")) {
         throw std::string("There is not a number among the elements");
     }
 
