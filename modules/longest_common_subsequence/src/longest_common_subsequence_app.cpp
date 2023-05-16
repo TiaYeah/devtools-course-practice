@@ -81,7 +81,7 @@ std::string LongestCommonSubsequenceApp::operator()(int argc,
 
     std::ostringstream stream;
 
-    for (long unsigned int i = 0; i < res.size(); i++) {
+    for (size_t i = 0; i < res.size(); i++) {
         stream << res[i] << " ";
     }
 

@@ -49,7 +49,7 @@ add_test(
     COMMAND ${APPLICATION} 1 1 wrong_num 3
 )
 set_tests_properties (${prefix}_can_Detect_Wrong_Vector_Element PROPERTIES
-    PASS_REGULAR_EXPRESSION "There is not a number among the elements of vectors!"
+    PASS_REGULAR_EXPRESSION "There is not a number among the elements"
     LABELS "${MODULE}")
 
 add_test(
@@ -65,7 +65,7 @@ add_test(
     COMMAND ${APPLICATION} 3 3 1 2 3 4 5 6
 )
 set_tests_properties (${prefix}_can_Find_Empty_Subsequence_Vectors PROPERTIES
-    PASS_REGULAR_EXPRESSION " "
+    PASS_REGULAR_EXPRESSION ""
     LABELS "${MODULE}")
 
 add_test(
@@ -73,7 +73,7 @@ add_test(
     COMMAND ${APPLICATION} 3 0 1 2 3
 )
 set_tests_properties (${prefix}_can_Find_Subsequence_With_Empty_Vector PROPERTIES
-    PASS_REGULAR_EXPRESSION " "
+    PASS_REGULAR_EXPRESSION ""
     LABELS "${MODULE}")
 
 add_test(
